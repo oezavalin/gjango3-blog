@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Blog</title>
+</head>
+<body>
+<h1> Oleg Zavalin </h1>
+
+<br>
+{% for blog in blogs %}
+
+<h2> {{ blog.title }} </h2>
+<br>
+<h5> {{ blog.date }} </h5>
+<br>
+<p> {{ blog.description }} </p>
+
+{% endfor %}
+</body>
+</html>
