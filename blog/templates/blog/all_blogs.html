@@ -1,21 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Blog</title>
-</head>
-<body>
-<h1> Oleg Zavalin </h1>
+{% extends "portfolio/base.html" %}
 
-<br>
+{% load static %}
+
+{% block content %}
+
+<h1 id="blogtitle" class="font-weight-bold text-center">Blog</h1>
+
+<h3 class="text-center mb-5">Oleg has written {{ blogs.count }} blog{{ blogs.count|pluralize }}</h3>
+
 {% for blog in blogs %}
-
-<h2> {{ blog.title }} </h2>
-<br>
-<h5> {{ blog.date }} </h5>
-<br>
-<p> {{ blog.description }} </p>
-
+<div class="row justify-content-center my-3">
+  <div class="col-md-10">
+    <a href="{% url 'blog:detail' blog.id %}">
+      <h2>{{ blog.title }}</h2>
+    </a>
+    <h5 class="text-muted">{{ blog.date|date:'M d Y'|upper }}</h5>
+    <h4>{{ blog.description|striptags|truncatechars:100 }}</h4>
+  </div>
+</div>
 {% endfor %}
-</body>
-</html>
+
+{% endblock %}>
